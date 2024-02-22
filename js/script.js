@@ -1,5 +1,31 @@
 window.onload = function () {
 
+    document.getElementById('download').addEventListener('click', function () {
+        // Get the canvas element
+        var canvas = document.getElementById('myChart');
+
+        // Create a data URL from the canvas
+        var dataUrl = canvas.toDataURL('image/png');
+
+        // Create a link element
+        var link = document.createElement('a');
+
+        // Set the link's href to the data URL
+        link.href = dataUrl;
+
+        // Set the download attribute of the link
+        link.download = 'chart.png';
+
+        // Append the link to the body
+        document.body.appendChild(link);
+
+        // Simulate a click on the link
+        link.click();
+
+        // Remove the link from the body
+        document.body.removeChild(link);
+    });
+
     var ctx = document.getElementById('myChart').getContext('2d');
 
     var myChart = new Chart(ctx, {
